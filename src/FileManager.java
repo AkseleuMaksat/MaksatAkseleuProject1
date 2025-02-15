@@ -1,12 +1,9 @@
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
 
 public class FileManager {
-    static CipherAks cipherAks  = new CipherAks();
-    static Validator validator = new Validator();
+    static CipherAks cipherAks;
+    static Validator validator;
     public static void encryptFile(Path inputPath, Path outputPath, int key) {
         if (!validator.isValidPath(inputPath)) {
             System.out.println("Error. File not found.");

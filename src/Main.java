@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class Main {
     private static final String ENTER_PATH = "Enter path of your file to encrypt: ";
     private static final String OUR_PATH = "Where do you want to save the file? Enter the path: ";
-    private static final String KEY = "Enter your key (integer number): ";
 
-    static Validator validator = new Validator();
+    static Validator validator;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
