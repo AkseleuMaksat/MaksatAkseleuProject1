@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.Scanner;
 
@@ -6,9 +5,11 @@ public class Main {
     private static final String ENTER_PATH = "Enter path of your file to encrypt: ";
     private static final String OUR_PATH = "Where do you want to save the file? Enter the path: ";
     private static final String KEY = "Enter your key (integer number): ";
+
+    static Validator validator = new Validator();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
 
 
         while (true) {
@@ -39,26 +40,24 @@ public class Main {
                 case 1:
                     System.out.print(ENTER_PATH);
                         path = Path.of(scanner.nextLine());
-                    System.out.print(KEY);
-                    key = scanner.nextInt();
-                        scanner.nextLine();
+
+                    key= validator.getValidKey(scanner);
+
                     System.out.print(OUR_PATH);
                         savePath = Path.of(scanner.nextLine());
                         FileManager.encryptFile(path, savePath, key);
-                    System.out.println("File encrypted successfully!");
                     break;
 
 
                 case 2:
                     System.out.print(ENTER_PATH);
                         path = Path.of(scanner.nextLine());
-                    System.out.print(KEY);
-                        key = scanner.nextInt();
-                        scanner.nextLine();
+
+                    key= validator.getValidKey(scanner);
+
                     System.out.print(OUR_PATH);
                         savePath = Path.of(scanner.nextLine());
                         FileManager.decryptFile(path, savePath, key);
-                    System.out.println("File decrypted successfully!");
                     break;
 
                 case 3:

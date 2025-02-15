@@ -7,7 +7,7 @@ public class CipherAks {
             'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', '.', ',', '«', '»', ':', '!', '?', ' ');
 
     public static String encryptText(String text, int key) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             boolean isUpper = Character.isUpperCase(ch);
@@ -17,19 +17,19 @@ public class CipherAks {
             if (index != -1) {
                 int bufferIndex = (index + key) % ALPHABET.size();
                 if (isUpper) {
-                    result+=Character.toUpperCase(ALPHABET.get(bufferIndex));
+                    result.append(Character.toUpperCase(ALPHABET.get(bufferIndex)));
                 }else {
-                    result+=ALPHABET.get(bufferIndex);
+                    result.append(ALPHABET.get(bufferIndex));
                 }
             }else {
-                result+=toLower;
+                result.append(toLower);
             }
         }
-        return result;
+        return result.toString();
     }
 
     public static String decryptText(String text, int key) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             boolean isUpper = Character.isUpperCase(ch);
@@ -39,15 +39,15 @@ public class CipherAks {
             if (index != -1) {
                 int bufferIndex = (index - key+ALPHABET.size()) % ALPHABET.size();
                 if (isUpper) {
-                    result+=Character.toUpperCase(ALPHABET.get(bufferIndex));
+                    result.append(Character.toUpperCase(ALPHABET.get(bufferIndex)));
                 }else {
-                    result+=ALPHABET.get(bufferIndex);
+                    result.append(ALPHABET.get(bufferIndex));
                 }
             }else {
-                result+=toLower;
+                result.append(toLower);
             }
         }
-        return result;
+        return result.toString();
     }
 
     }
